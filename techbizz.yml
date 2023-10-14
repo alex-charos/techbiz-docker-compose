@@ -1,0 +1,24 @@
+name: techbiz
+version: "3.8"
+
+services:
+
+  postgres:
+    image: postgres:15.3
+    container_name: techbiz-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: payments
+      POSTGRES_USER: techbiz
+      POSTGRES_PASSWORD: techbiz
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: techbiz-rabbit
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: techbiz
+      RABBITMQ_DEFAULT_PASS: techbiz
